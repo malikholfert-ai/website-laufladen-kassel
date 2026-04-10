@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 export default function ImpressumPage() {
   return (
     <div className="min-h-screen">
-      <section className="bg-brand-navy py-20" data-navbar-theme="dark">
+      <section className="bg-brand-midnight pt-28 pb-16" data-navbar-theme="dark">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="h1 text-white">Impressum</h1>
         </div>

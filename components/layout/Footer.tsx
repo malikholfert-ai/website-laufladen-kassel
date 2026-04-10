@@ -24,7 +24,7 @@ const brands = [
 export function Footer() {
   return (
     <footer
-      className="bg-brand-navy text-white"
+      className="bg-brand-midnight text-white"
       data-navbar-theme="dark"
       role="contentinfo"
     >
@@ -132,7 +132,7 @@ export function Footer() {
               ))}
             </ul>
             <div className="mt-6 flex items-start gap-2 bg-white/5 rounded-lg p-3.5">
-              <Clock size={14} className="shrink-0 mt-0.5 text-brand-sky" />
+              <Clock size={14} className="shrink-0 mt-0.5 text-brand-electric" />
               <p className="text-xs text-white/60 leading-relaxed">
                 Parkticket-Erstattung ab 40 € Einkaufswert (bis 3,00 €)
               </p>
@@ -172,13 +172,13 @@ export function Footer() {
           <div className="flex items-center gap-4">
             <Link
               href="/impressum"
-              className="text-xs text-white/40 hover:text-white/70 transition-colors"
+              className="text-sm text-white/70 hover:text-white font-medium transition-colors underline underline-offset-2"
             >
               Impressum
             </Link>
             <Link
               href="/datenschutz"
-              className="text-xs text-white/40 hover:text-white/70 transition-colors"
+              className="text-sm text-white/70 hover:text-white font-medium transition-colors underline underline-offset-2"
             >
               Datenschutz
             </Link>

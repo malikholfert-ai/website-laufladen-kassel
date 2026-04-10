@@ -23,7 +23,7 @@ const kategorien = [
   {
     title: "Leicht-\nathletik",
     sub: "Spike-Schuhe, Vereine",
-    href: "/laufschuhe",
+    href: "/nordic-walking",
     accent: "bg-brand-surface",
     accentText: "text-brand-midnight",
   },
