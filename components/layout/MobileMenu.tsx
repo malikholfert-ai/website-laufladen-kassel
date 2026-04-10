@@ -17,7 +17,6 @@ interface MobileMenuProps {
 }
 
 export function MobileMenu({ isOpen, onClose, navItems }: MobileMenuProps) {
-  // Scrolling sperren wenn Menü offen
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
@@ -29,7 +28,6 @@ export function MobileMenu({ isOpen, onClose, navItems }: MobileMenuProps) {
     };
   }, [isOpen]);
 
-  // ESC-Taste schließt Menü
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
@@ -59,7 +57,7 @@ export function MobileMenu({ isOpen, onClose, navItems }: MobileMenuProps) {
         className={`
           fixed top-0 right-0 z-50 h-full w-80 max-w-[90vw]
           flex flex-col
-          bg-brand-navy text-white
+          bg-brand-midnight text-white
           transform transition-transform duration-300 ease-in-out
           ${isOpen ? "translate-x-0" : "translate-x-full"}
         `}
@@ -104,11 +102,11 @@ export function MobileMenu({ isOpen, onClose, navItems }: MobileMenuProps) {
               onClick={onClose}
               className="
                 block w-full text-center py-3.5 px-6 rounded-lg
-                bg-brand-cta text-white font-semibold
-                hover:opacity-90 transition-opacity min-h-[44px]
+                bg-brand-electric text-white font-semibold
+                hover:bg-blue-600 transition-colors min-h-[44px]
               "
             >
-              Termin vereinbaren
+              Laufanalyse anfragen
             </Link>
           </div>
         </nav>

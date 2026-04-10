@@ -45,7 +45,7 @@ function FAQItem({ question, answer, isOpen, onToggle, index }: FAQItemProps) {
   const buttonId = `faq-button-${index}`;
 
   return (
-    <div className="border-b border-gray-100 last:border-0">
+    <div className="border-b border-brand-border last:border-0">
       <button
         id={buttonId}
         onClick={onToggle}
@@ -54,13 +54,13 @@ function FAQItem({ question, answer, isOpen, onToggle, index }: FAQItemProps) {
         className={cn(
           "w-full flex items-start justify-between gap-4 py-5 text-left",
           "font-sans text-[15px] font-semibold transition-colors min-h-[44px]",
-          isOpen ? "text-brand-navy" : "text-brand-text hover:text-brand-navy"
+          isOpen ? "text-brand-midnight" : "text-brand-text hover:text-brand-midnight"
         )}
       >
         <span>{question}</span>
         <span className="shrink-0 mt-0.5">
           {isOpen ? (
-            <Minus size={18} className="text-brand-blue" />
+            <Minus size={18} className="text-brand-electric" />
           ) : (
             <Plus size={18} className="text-brand-muted" />
           )}
@@ -88,7 +88,7 @@ export function FAQAccordion() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <div className="bg-white rounded-2xl border border-gray-100 px-6 py-2">
+    <div className="bg-white rounded-2xl border border-brand-border px-6 py-2">
       {faqs.map((faq, index) => (
         <FAQItem
           key={index}

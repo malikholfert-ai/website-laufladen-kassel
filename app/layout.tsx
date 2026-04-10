@@ -1,22 +1,23 @@
 import type { Metadata } from "next";
-import { DM_Serif_Display, Plus_Jakarta_Sans } from "next/font/google";
+import { Barlow_Condensed, Barlow } from "next/font/google";
 import "./globals.css";
 import { defaultMetadata, localBusinessSchema } from "@/lib/metadata";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { ScrollRevealProvider } from "@/components/layout/ScrollRevealProvider";
 
-const dmSerifDisplay = DM_Serif_Display({
+const barlowCondensed = Barlow_Condensed({
   variable: "--font-display",
   subsets: ["latin"],
-  weight: "400",
+  weight: ["400", "500", "600", "700", "800"],
+  style: ["normal", "italic"],
   display: "swap",
 });
 
-const plusJakartaSans = Plus_Jakarta_Sans({
+const barlow = Barlow({
   variable: "--font-sans",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["300", "400", "500", "600", "700"],
   display: "swap",
 });
 
@@ -30,7 +31,7 @@ export default function RootLayout({
   return (
     <html
       lang="de"
-      className={`${dmSerifDisplay.variable} ${plusJakartaSans.variable}`}
+      className={`${barlowCondensed.variable} ${barlow.variable}`}
     >
       <head>
         <script

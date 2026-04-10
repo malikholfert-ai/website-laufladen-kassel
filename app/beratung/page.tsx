@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { createPageMetadata } from "@/lib/metadata";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { Badge } from "@/components/ui/Badge";
+import { Button } from "@/components/ui/Button";
 import { ProcessSteps } from "@/components/sections/ProcessSteps";
 import { BookingForm } from "@/components/sections/BookingForm";
 import { FAQAccordion } from "@/components/sections/FAQAccordion";
@@ -10,7 +11,7 @@ import { CheckCircle, Phone } from "lucide-react";
 
 export const metadata: Metadata = createPageMetadata(
   "Laufanalyse & Beratung — Kein Laufband, echter Bürgersteig",
-  "Individuelle Laufanalyse auf dem echten Bürgersteig — kostenlos, ohne Laufband. 30+ Jahre Erfahrung. Termin online anfragen oder direkt anrufen: (0561) 10 44 75.",
+  "Individuelle Laufanalyse auf dem echten Bürgersteig — kostenlos, ohne Laufband. 40 Jahre Erfahrung. Termin online anfragen oder direkt anrufen: (0561) 10 44 75.",
   "/beratung"
 );
 
@@ -40,37 +41,40 @@ export default function BeratungPage() {
     <div className="min-h-screen">
 
       {/* Hero */}
-      <section className="bg-brand-navy pt-28 pb-20 lg:pt-36 lg:pb-28" data-navbar-theme="dark">
+      <section className="bg-brand-midnight pt-28 pb-16 lg:pt-36 lg:pb-24" data-navbar-theme="dark">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <SectionLabel variant="light">Laufanalyse</SectionLabel>
-            <h1 className="hero-headline text-white mt-3 mb-6">
-              Kein Algorithmus.
-              <br />
-              <span className="text-brand-sky">Kein Laufband.</span>
-              <br />
-              Echte Augen.
-            </h1>
-            <p className="text-white/70 text-lg leading-relaxed mb-8 max-w-xl">
-              Wir analysieren deinen Laufstil auf dem echten Bürgersteig vor dem
-              Laden — kostenlos, persönlich, ohne Terminzwang. Bewusste
-              Entscheidung gegen das Laufband, seit über 10 Jahren.
-            </p>
+          <p className="text-brand-orange text-xs font-display uppercase tracking-[0.2em] mb-4">
+            Laufanalyse
+          </p>
+          <h1 className="h1 text-white max-w-2xl">
+            Kein Algorithmus. Kein Laufband. Echte Augen.
+          </h1>
+          <p className="text-white/60 mt-4 max-w-xl leading-relaxed">
+            Wir analysieren deinen Laufstil auf dem echten Bürgersteig vor dem
+            Laden — kostenlos, persönlich, ohne Terminzwang. Bewusste
+            Entscheidung gegen das Laufband, seit über 10 Jahren.
+          </p>
 
-            {/* Trust Badges */}
-            <div className="flex flex-wrap gap-3">
-              {[
-                "Kostenlos & unverbindlich",
-                "Ca. 45 Minuten",
-                "Schuhe draußen testen",
-                "30+ Jahre Erfahrung",
-              ].map((text) => (
-                <div key={text} className="flex items-center gap-1.5 text-white/60 text-sm">
-                  <CheckCircle size={14} className="text-brand-cta shrink-0" />
-                  <span>{text}</span>
-                </div>
-              ))}
-            </div>
+          {/* Trust Badges */}
+          <div className="flex flex-wrap gap-4 mt-8">
+            {[
+              "Kostenlos & unverbindlich",
+              "Ca. 45 Minuten",
+              "Schuhe draußen testen",
+              "40 Jahre Erfahrung",
+            ].map((text) => (
+              <div key={text} className="flex items-center gap-1.5 text-white/60 text-sm">
+                <CheckCircle size={14} className="text-brand-electric shrink-0" />
+                <span>{text}</span>
+              </div>
+            ))}
+          </div>
+
+          {/* NUR auf /beratung: CTA Button */}
+          <div className="mt-10">
+            <Button as="link" href="#termin" variant="primary" size="lg">
+              Termin anfragen
+            </Button>
           </div>
         </div>
       </section>
@@ -95,7 +99,7 @@ export default function BeratungPage() {
       </section>
 
       {/* Buchungsformular */}
-      <section className="bg-brand-bg py-20 lg:py-28" data-navbar-theme="light" id="termin">
+      <section className="bg-brand-surface py-20 lg:py-28" data-navbar-theme="light" id="termin">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
 
@@ -115,21 +119,21 @@ export default function BeratungPage() {
               <div className="space-y-4">
                 <a
                   href="tel:+4956110447-5"
-                  className="flex items-center gap-3 p-4 bg-white rounded-xl border border-brand-tint hover:border-brand-blue/30 hover:shadow-sm transition-all group"
+                  className="flex items-center gap-3 p-4 bg-white rounded-xl border border-brand-border hover:border-brand-electric/30 hover:shadow-sm transition-all group"
                 >
-                  <div className="w-10 h-10 rounded-lg bg-brand-tint flex items-center justify-center shrink-0">
-                    <Phone size={18} className="text-brand-blue" />
+                  <div className="w-10 h-10 rounded-lg bg-brand-blue-tint flex items-center justify-center shrink-0">
+                    <Phone size={18} className="text-brand-electric" />
                   </div>
                   <div>
-                    <p className="font-semibold text-brand-navy text-sm font-sans group-hover:text-brand-blue transition-colors">
+                    <p className="font-semibold text-brand-midnight text-sm font-sans group-hover:text-brand-electric transition-colors">
                       Direkt anrufen
                     </p>
                     <p className="text-brand-muted text-xs">(0561) 10 44 75</p>
                   </div>
                 </a>
 
-                <div className="p-4 bg-brand-cta-light rounded-xl border border-brand-cta/20">
-                  <p className="text-brand-cta font-semibold text-sm font-sans">
+                <div className="p-4 bg-brand-blue-tint rounded-xl border border-brand-electric/20">
+                  <p className="text-brand-electric font-semibold text-sm font-sans">
                     Kein Termin? Auch okay.
                   </p>
                   <p className="text-brand-slate text-xs mt-1 leading-relaxed">
@@ -141,7 +145,7 @@ export default function BeratungPage() {
               </div>
 
               {/* Öffnungszeiten Reminder */}
-              <div className="mt-6 pt-6 border-t border-gray-100">
+              <div className="mt-6 pt-6 border-t border-brand-border">
                 <p className="text-brand-muted text-xs uppercase tracking-[0.08em] font-semibold mb-3">
                   Öffnungszeiten
                 </p>
@@ -153,7 +157,7 @@ export default function BeratungPage() {
                   ].map(([day, time]) => (
                     <div key={day} className="flex justify-between">
                       <span className="text-brand-slate">{day}</span>
-                      <span className="text-brand-navy">{time}</span>
+                      <span className="text-brand-midnight">{time}</span>
                     </div>
                   ))}
                 </div>
@@ -161,9 +165,9 @@ export default function BeratungPage() {
             </div>
 
             {/* Rechts — Formular */}
-            <div className="bg-white rounded-2xl border border-brand-tint p-8 shadow-sm">
+            <div className="bg-white rounded-2xl border border-brand-border p-8 shadow-sm">
               <div className="flex items-center justify-between mb-6">
-                <h3 className="font-semibold text-brand-navy font-sans">
+                <h3 className="font-semibold text-brand-midnight font-sans">
                   Terminanfrage
                 </h3>
                 <Badge variant="cta">Kostenlos</Badge>
@@ -190,7 +194,7 @@ export default function BeratungPage() {
       </section>
 
       {/* Testimonials */}
-      <section className="bg-brand-bg py-20 lg:py-28" data-navbar-theme="light">
+      <section className="bg-brand-surface py-20 lg:py-28" data-navbar-theme="light">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <SectionLabel>Kundenstimmen</SectionLabel>

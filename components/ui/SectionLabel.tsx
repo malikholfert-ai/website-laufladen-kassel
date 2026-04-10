@@ -8,9 +8,6 @@ interface SectionLabelProps {
   className?: string;
 }
 
-/**
- * Caps-Label über Sektionen — z.B. "Unsere Stärken" oder "Laufanalyse"
- */
 export function SectionLabel({
   children,
   variant = "default",
@@ -20,7 +17,7 @@ export function SectionLabel({
     <p
       className={cn(
         "text-xs font-semibold uppercase tracking-[0.1em] font-sans mb-3",
-        variant === "default" ? "text-brand-blue" : "text-brand-sky",
+        variant === "default" ? "text-brand-electric" : "text-brand-muted",
         className
       )}
     >

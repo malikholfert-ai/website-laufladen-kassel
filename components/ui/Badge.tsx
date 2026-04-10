@@ -10,13 +10,13 @@ interface BadgeProps {
 
 const variantClasses: Record<BadgeVariant, string> = {
   default:
-    "bg-brand-tint text-brand-navy border border-brand-blue/20",
+    "bg-brand-blue-tint text-brand-midnight border border-brand-electric/20",
   cta:
-    "bg-brand-cta-light text-brand-cta border border-brand-cta/20",
+    "bg-brand-blue-tint text-brand-electric border border-brand-electric/20",
   navy:
-    "bg-brand-navy text-white",
+    "bg-brand-midnight text-white",
   outline:
-    "border border-brand-blue/30 text-brand-blue bg-transparent",
+    "border border-brand-electric/30 text-brand-electric bg-transparent",
 };
 
 export function Badge({

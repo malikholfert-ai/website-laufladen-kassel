@@ -52,55 +52,25 @@ const categories = [
 ];
 
 const brands = [
-  {
-    name: "adidas",
-    note: "Runfalcon, Ultraboost, Adizero",
-  },
-  {
-    name: "ASICS",
-    note: "Gel-Kayano, Gel-Nimbus, GT-Serie",
-  },
-  {
-    name: "Brooks",
-    note: "Ghost, Adrenaline, Glycerin",
-  },
-  {
-    name: "Diadora",
-    note: "Mythos, Reevo, Strada",
-  },
-  {
-    name: "Mizuno",
-    note: "Wave Rider, Wave Inspire",
-  },
-  {
-    name: "New Balance",
-    note: "1080, 860, Fresh Foam",
-  },
-  {
-    name: "Nike",
-    note: "React, Pegasus, Air Zoom",
-  },
-  {
-    name: "ON Running",
-    note: "Cloudmonster, Cloudstratus, Cloudrunner",
-  },
-  {
-    name: "Puma",
-    note: "Velocity Nitro, Deviate",
-  },
-  {
-    name: "Saucony",
-    note: "Ride, Guide, Kinvara",
-  },
+  { name: "adidas",      note: "Runfalcon, Ultraboost, Adizero" },
+  { name: "ASICS",       note: "Gel-Kayano, Gel-Nimbus, GT-Serie" },
+  { name: "Brooks",      note: "Ghost, Adrenaline, Glycerin" },
+  { name: "Diadora",     note: "Mythos, Reevo, Strada" },
+  { name: "Mizuno",      note: "Wave Rider, Wave Inspire" },
+  { name: "New Balance", note: "1080, 860, Fresh Foam" },
+  { name: "Nike",        note: "React, Pegasus, Air Zoom" },
+  { name: "ON Running",  note: "Cloudmonster, Cloudstratus, Cloudrunner" },
+  { name: "Puma",        note: "Velocity Nitro, Deviate" },
+  { name: "Saucony",     note: "Ride, Guide, Kinvara" },
 ];
 
 const accessories = [
-  { name: "Einlegesohlen", desc: "Orthopädisch geprüfte Einlagen, Vollfußeinlagen" },
-  { name: "Laufsocken", desc: "Blasenfrei — funktionale Socken für lange Distanzen" },
-  { name: "GPS-Uhren", desc: "Garmin und weitere Laufuhren zur Auswahl" },
-  { name: "Sporternährung", desc: "Gels, Riegel, Drinks für Training und Wettkampf" },
+  { name: "Einlegesohlen",        desc: "Orthopädisch geprüfte Einlagen, Vollfußeinlagen" },
+  { name: "Laufsocken",           desc: "Blasenfrei — funktionale Socken für lange Distanzen" },
+  { name: "GPS-Uhren",            desc: "Garmin und weitere Laufuhren zur Auswahl" },
+  { name: "Sporternährung",       desc: "Gels, Riegel, Drinks für Training und Wettkampf" },
   { name: "Kompressionsbekleidung", desc: "Strümpfe und Hosen für Regeneration" },
-  { name: "Laufbekleidung", desc: "Funktionsshirts, Jacken, Tights — wetterfest" },
+  { name: "Laufbekleidung",       desc: "Funktionsshirts, Jacken, Tights — wetterfest" },
 ];
 
 export default function LaufschuhePage() {
@@ -108,21 +78,19 @@ export default function LaufschuhePage() {
     <div className="min-h-screen">
 
       {/* Hero */}
-      <section className="bg-brand-navy pt-28 pb-20 lg:pt-36 lg:pb-28" data-navbar-theme="dark">
+      <section className="bg-brand-midnight pt-28 pb-16 lg:pt-36 lg:pb-24" data-navbar-theme="dark">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionLabel variant="light">Sortiment</SectionLabel>
-          <h1 className="h1 text-white mt-3 mb-6 max-w-2xl">
+          <p className="text-brand-orange text-xs font-display uppercase tracking-[0.2em] mb-4">
+            Sortiment
+          </p>
+          <h1 className="h1 text-white max-w-2xl">
             Laufschuhe & Ausrüstung für jeden Laufstil
           </h1>
-          <p className="text-white/70 leading-relaxed max-w-xl mb-8">
+          <p className="text-white/60 mt-4 max-w-xl leading-relaxed">
             Straßenlauf, Trailrunning, Nordic Walking, Leichtathletik — wir
             führen alle relevanten Marken und beraten dich individuell. Kein
-            Sortiment von der Stange, kein Schuh den du nicht draußen testen
-            kannst.
+            Sortiment von der Stange.
           </p>
-          <Button as="link" href="/beratung" variant="primary" size="lg">
-            Persönliche Beratung anfragen
-          </Button>
         </div>
       </section>
 
@@ -140,11 +108,11 @@ export default function LaufschuhePage() {
             {categories.map(({ icon: Icon, title, subtitle, description, brands: catBrands, hint, link }) => (
               <div
                 key={title}
-                className="group bg-white rounded-2xl border border-gray-100 p-8 hover:border-brand-blue/20 hover:shadow-md transition-all duration-200"
+                className="group bg-white rounded-2xl border border-brand-border p-8 hover:border-brand-electric/20 hover:shadow-md transition-all duration-200"
               >
                 <div className="flex items-start justify-between mb-5">
-                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-brand-tint">
-                    <Icon size={22} className="text-brand-blue" strokeWidth={1.5} />
+                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-brand-blue-tint">
+                    <Icon size={22} className="text-brand-electric" strokeWidth={1.5} />
                   </div>
                   {link && (
                     <Button as="link" href={link} variant="secondary" size="sm">
@@ -154,12 +122,10 @@ export default function LaufschuhePage() {
                   )}
                 </div>
 
-                <p className="text-xs text-brand-blue font-semibold uppercase tracking-[0.08em] mb-1">
+                <p className="text-xs text-brand-electric font-semibold uppercase tracking-[0.08em] mb-1">
                   {subtitle}
                 </p>
-                <h3 className="text-xl font-semibold text-brand-navy font-sans mb-3">
-                  {title}
-                </h3>
+                <h3 className="h3 text-brand-midnight mb-3">{title}</h3>
                 <p className="text-brand-slate text-sm leading-relaxed mb-5">
                   {description}
                 </p>
@@ -168,14 +134,14 @@ export default function LaufschuhePage() {
                   {catBrands.map((b) => (
                     <span
                       key={b}
-                      className="px-2 py-1 bg-brand-bg rounded-lg text-xs text-brand-slate font-medium"
+                      className="px-2 py-1 bg-brand-surface rounded-lg text-xs text-brand-slate font-medium"
                     >
                       {b}
                     </span>
                   ))}
                 </div>
 
-                <p className="text-brand-muted text-xs border-t border-gray-50 pt-4">
+                <p className="text-brand-muted text-xs border-t border-brand-border pt-4">
                   {hint}
                 </p>
               </div>
@@ -185,7 +151,7 @@ export default function LaufschuhePage() {
       </section>
 
       {/* Marken */}
-      <section className="bg-brand-bg py-20 lg:py-28" data-navbar-theme="light">
+      <section className="bg-brand-surface py-20 lg:py-28" data-navbar-theme="light">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-12">
             <SectionLabel>Unsere Marken</SectionLabel>
@@ -203,9 +169,9 @@ export default function LaufschuhePage() {
             {brands.map(({ name, note }) => (
               <div
                 key={name}
-                className="bg-white rounded-xl border border-brand-tint p-5 hover:border-brand-blue/20 hover:shadow-sm transition-all duration-200"
+                className="bg-white rounded-xl border border-brand-border p-5 hover:border-brand-electric/20 hover:shadow-sm transition-all duration-200"
               >
-                <p className="font-semibold text-brand-navy font-sans mb-1.5">{name}</p>
+                <p className="font-semibold text-brand-midnight font-sans mb-1.5">{name}</p>
                 <p className="text-brand-muted text-xs leading-relaxed">{note}</p>
               </div>
             ))}
@@ -214,7 +180,7 @@ export default function LaufschuhePage() {
       </section>
 
       {/* Beratungshinweis */}
-      <section className="bg-brand-navy py-20" data-navbar-theme="dark">
+      <section className="bg-brand-midnight py-20" data-navbar-theme="dark">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl mx-auto text-center">
             <Badge variant="navy" className="mb-5 border border-white/20">
@@ -223,10 +189,9 @@ export default function LaufschuhePage() {
             <h2 className="h2 text-white mb-5">
               Nicht sicher welcher Schuh passt?
             </h2>
-            <p className="text-white/70 leading-relaxed mb-8">
+            <p className="text-white/60 leading-relaxed mb-8">
               Lass dich persönlich beraten — mit Laufanalyse auf dem
-              Bürgersteig, ohne Zeitdruck und ohne Kaufzwang. Wir finden den
-              richtigen Schuh für deinen Fuß, deinen Laufstil und deine Ziele.
+              Bürgersteig, ohne Zeitdruck und ohne Kaufzwang.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button as="link" href="/beratung" variant="primary" size="lg">
@@ -255,11 +220,11 @@ export default function LaufschuhePage() {
             {accessories.map(({ name, desc }) => (
               <div
                 key={name}
-                className="flex gap-4 p-5 rounded-xl border border-gray-100 hover:border-brand-tint hover:bg-brand-bg/50 transition-all duration-200"
+                className="flex gap-4 p-5 rounded-xl border border-brand-border hover:border-brand-blue-tint hover:bg-brand-surface/50 transition-all duration-200"
               >
-                <div className="w-1.5 h-full min-h-[40px] rounded-full bg-brand-tint shrink-0" />
+                <div className="w-1.5 h-full min-h-[40px] rounded-full bg-brand-blue-tint shrink-0" />
                 <div>
-                  <p className="font-semibold text-brand-navy text-sm font-sans mb-1">{name}</p>
+                  <p className="font-semibold text-brand-midnight text-sm font-sans mb-1">{name}</p>
                   <p className="text-brand-muted text-xs leading-relaxed">{desc}</p>
                 </div>
               </div>

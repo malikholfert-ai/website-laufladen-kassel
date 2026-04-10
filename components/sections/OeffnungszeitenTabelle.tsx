@@ -27,34 +27,40 @@ export function OeffnungszeitenTabelle() {
     <div>
       <div className="mb-4">
         <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold font-sans ${
-          offen ? "bg-brand-cta-light text-brand-cta border border-brand-cta/20" : "bg-brand-bg text-brand-muted border border-brand-tint"
+          offen
+            ? "bg-brand-blue-tint text-brand-electric border border-brand-electric/20"
+            : "bg-brand-surface text-brand-muted border border-brand-border"
         }`}>
-          <span className={`w-1.5 h-1.5 rounded-full ${offen ? "bg-brand-cta" : "bg-brand-muted"}`} />
+          <span className={`w-1.5 h-1.5 rounded-full ${offen ? "bg-brand-electric" : "bg-brand-muted"}`} />
           {offen ? "Jetzt geöffnet" : "Aktuell geschlossen"}
         </span>
       </div>
-      <div className="bg-white rounded-2xl border border-brand-tint overflow-hidden">
+      <div className="bg-white rounded-2xl border border-brand-border overflow-hidden">
         {ZEITEN.map(({ label, time, day }) => {
           const isToday = day === today;
           return (
-            <div key={day} className={`flex justify-between items-center px-5 py-3.5 border-b border-brand-tint last:border-0 ${
-              isToday ? "bg-brand-cta-light" : ""
+            <div key={day} className={`flex justify-between items-center px-5 py-3.5 border-b border-brand-border last:border-0 ${
+              isToday ? "bg-brand-blue-tint" : ""
             }`}>
-              <span className={`text-sm font-sans ${isToday ? "text-brand-navy font-semibold" : "text-brand-slate"}`}>
+              <span className={`text-sm font-sans ${isToday ? "text-brand-midnight font-semibold" : "text-brand-slate"}`}>
                 {label}
-                {isToday && <span className="ml-2 text-[10px] uppercase tracking-[0.08em] text-brand-cta font-semibold">Heute</span>}
+                {isToday && (
+                  <span className="ml-2 text-[10px] uppercase tracking-[0.08em] text-brand-electric font-semibold">
+                    Heute
+                  </span>
+                )}
               </span>
-              <span className={`text-sm font-sans ${isToday ? "text-brand-navy font-semibold" : "text-brand-navy"}`}>
+              <span className={`text-sm font-sans ${isToday ? "text-brand-midnight font-semibold" : "text-brand-midnight"}`}>
                 {time}
               </span>
             </div>
           );
         })}
       </div>
-      <div className="mt-4 flex items-start gap-3 p-4 rounded-xl bg-brand-cta-light border border-brand-cta/20">
-        <Ticket size={18} className="text-brand-cta shrink-0 mt-0.5" />
+      <div className="mt-4 flex items-start gap-3 p-4 rounded-xl bg-brand-blue-tint border border-brand-electric/20">
+        <Ticket size={18} className="text-brand-electric shrink-0 mt-0.5" />
         <div>
-          <p className="text-sm font-semibold text-brand-navy font-sans">Parkticket-Erstattung</p>
+          <p className="text-sm font-semibold text-brand-midnight font-sans">Parkticket-Erstattung</p>
           <p className="text-xs text-brand-slate mt-1 leading-relaxed">
             Ab 40 € Einkaufswert erstatten wir dein Parkticket bis zu 3,00 €.
             Parkhaus Friedrichsplatz — erste Stunde kostenlos mit Parkkarte.

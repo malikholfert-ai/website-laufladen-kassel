@@ -23,7 +23,6 @@ export function Navbar() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
 
-      // Section-Awareness: prüfe welches Element unter der Navbar liegt
       const navbar = document.querySelector("nav");
       if (!navbar) return;
       const navHeight = navbar.getBoundingClientRect().height;
@@ -46,15 +45,14 @@ export function Navbar() {
   const isLight = !isDarkSection;
   const navBg = isScrolled
     ? isLight
-      ? "bg-white/95 backdrop-blur-sm shadow-sm border-b border-gray-100"
-      : "bg-brand-navy/95 backdrop-blur-sm shadow-sm"
+      ? "bg-white/95 backdrop-blur-sm shadow-sm border-b border-brand-border"
+      : "bg-brand-midnight/95 backdrop-blur-sm shadow-sm"
     : "bg-transparent";
 
   const logoVariant: "light" | "dark" = isDarkSection ? "light" : "dark";
   const linkColor = isDarkSection
     ? "text-white/85 hover:text-white"
-    : "text-brand-navy/80 hover:text-brand-navy";
-  const ctaStyle = "bg-brand-cta text-white hover:opacity-90 px-4 py-2 rounded-lg text-sm font-semibold";
+    : "text-brand-midnight/80 hover:text-brand-midnight";
 
   return (
     <>
@@ -70,7 +68,7 @@ export function Navbar() {
 
             {/* Desktop Nav */}
             <div className="hidden lg:flex items-center gap-1">
-              {navItems.slice(0, -1).map((item) => (
+              {navItems.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
@@ -79,24 +77,13 @@ export function Navbar() {
                   {item.label}
                 </Link>
               ))}
-              <div className="ml-2 flex items-center gap-3">
-                <Link
-                  href="/kontakt"
-                  className={`px-3.5 py-2 rounded-lg text-sm font-medium transition-colors ${linkColor}`}
-                >
-                  Kontakt
-                </Link>
-                <Link href="/beratung" className={ctaStyle}>
-                  Termin buchen
-                </Link>
-              </div>
             </div>
 
             {/* Mobile Hamburger */}
             <button
               onClick={() => setMobileOpen(true)}
               className={`lg:hidden p-2 rounded-lg transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center
-                ${isDarkSection ? "hover:bg-white/10 text-white" : "hover:bg-brand-navy/10 text-brand-navy"}
+                ${isDarkSection ? "hover:bg-white/10 text-white" : "hover:bg-brand-midnight/10 text-brand-midnight"}
               `}
               aria-label="Menü öffnen"
               aria-expanded={mobileOpen}

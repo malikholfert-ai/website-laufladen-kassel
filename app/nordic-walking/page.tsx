@@ -11,7 +11,6 @@ export const metadata: Metadata = createPageMetadata(
   "/nordic-walking"
 );
 
-/* Stocklängen-Tabelle: Körpergröße → empfohlene Stocklänge */
 const stocklaengen = [
   { groesse: "150 – 155 cm", laenge: "100 cm" },
   { groesse: "155 – 160 cm", laenge: "105 cm" },
@@ -22,12 +21,12 @@ const stocklaengen = [
   { groesse: "180 – 185 cm", laenge: "115 – 120 cm" },
   { groesse: "185 – 190 cm", laenge: "120 cm" },
   { groesse: "190 – 195 cm", laenge: "120 – 125 cm" },
-  { groesse: "195 + cm", laenge: "125 cm" },
+  { groesse: "195 + cm",     laenge: "125 cm" },
 ];
 
 const schuhMarken = [
-  { name: "Asics", model: "GT-Serie, Gel-Cumulus — gute Dämpfung für lange Strecken" },
-  { name: "Brooks", model: "Ghost, Adrenaline — breite Basis, stabile Abrollung" },
+  { name: "Asics",       model: "GT-Serie, Gel-Cumulus — gute Dämpfung für lange Strecken" },
+  { name: "Brooks",      model: "Ghost, Adrenaline — breite Basis, stabile Abrollung" },
   { name: "New Balance", model: "Fresh Foam 1080 — weiche Dämpfung, bequemer Leisten" },
 ];
 
@@ -51,22 +50,21 @@ export default function NordicWalkingPage() {
     <div className="min-h-screen">
 
       {/* Hero */}
-      <section className="bg-brand-navy pt-28 pb-20 lg:pt-36 lg:pb-28" data-navbar-theme="dark">
+      <section className="bg-brand-midnight pt-28 pb-16 lg:pt-36 lg:pb-24" data-navbar-theme="dark">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Badge variant="navy" className="mb-5 border border-white/20">
-            Pioniere in Kassel
-          </Badge>
-          <SectionLabel variant="light">Nordic Walking</SectionLabel>
-          <h1 className="h1 text-white mt-3 max-w-2xl mb-6">
+          <p className="text-brand-orange text-xs font-display uppercase tracking-[0.2em] mb-4">
+            Nordic Walking
+          </p>
+          <h1 className="h1 text-white max-w-2xl">
             Wir waren die Ersten in Kassel.
           </h1>
-          <p className="text-white/70 leading-relaxed max-w-xl mb-8">
+          <p className="text-white/60 mt-4 max-w-xl leading-relaxed">
             Als Nordic Walking in Deutschland noch kaum jemand kannte, haben
             wir das Sortiment aufgebaut. Exel und Leki Stöcke, das richtige
-            Schuhwerk und eine Beratung die den Unterschied zwischen Wandern
-            und Nordic Walking kennt — seit den Anfängen der Sportart.
+            Schuhwerk und eine Beratung die den Unterschied kennt — seit den
+            Anfängen der Sportart.
           </p>
-          <div className="flex flex-wrap gap-4">
+          <div className="flex flex-wrap gap-4 mt-8">
             {[
               "Exel & Leki Stöcke",
               "Passende Schuhberatung",
@@ -74,7 +72,7 @@ export default function NordicWalkingPage() {
               "Kürzungsservice vor Ort",
             ].map((t) => (
               <div key={t} className="flex items-center gap-2 text-white/60 text-sm">
-                <CheckCircle size={14} className="text-brand-sky shrink-0" />
+                <CheckCircle size={14} className="text-brand-electric shrink-0" />
                 <span>{t}</span>
               </div>
             ))}
@@ -99,24 +97,24 @@ export default function NordicWalkingPage() {
             {stockMarken.map(({ name, herkunft, besonderheit, modelle }) => (
               <div
                 key={name}
-                className="bg-white rounded-2xl border border-gray-100 p-8 hover:border-brand-blue/20 hover:shadow-md transition-all duration-200"
+                className="bg-white rounded-2xl border border-brand-border p-8 hover:border-brand-electric/20 hover:shadow-md transition-all duration-200"
               >
                 <div className="flex items-start justify-between mb-5">
                   <div>
-                    <h3 className="text-2xl font-semibold text-brand-navy font-sans">{name}</h3>
+                    <h3 className="h2 text-brand-midnight">{name}</h3>
                     <p className="text-brand-muted text-xs mt-1">{herkunft}</p>
                   </div>
                   <Badge variant="default">{herkunft}</Badge>
                 </div>
                 <p className="text-brand-slate text-sm leading-relaxed mb-5">{besonderheit}</p>
                 <div>
-                  <p className="text-xs font-semibold text-brand-blue uppercase tracking-[0.08em] mb-2">
+                  <p className="text-xs font-semibold text-brand-electric uppercase tracking-[0.08em] mb-2">
                     Aktuelle Modelle
                   </p>
                   <ul className="space-y-1.5">
                     {modelle.map((m) => (
                       <li key={m} className="flex items-center gap-2 text-brand-slate text-sm">
-                        <div className="w-1.5 h-1.5 rounded-full bg-brand-sky shrink-0" />
+                        <div className="w-1.5 h-1.5 rounded-full bg-brand-electric/40 shrink-0" />
                         {m}
                       </li>
                     ))}
@@ -127,18 +125,18 @@ export default function NordicWalkingPage() {
           </div>
 
           {/* Kürzungsservice */}
-          <div className="flex items-start gap-5 p-7 rounded-2xl bg-brand-tint border border-brand-blue/20">
+          <div className="flex items-start gap-5 p-7 rounded-2xl bg-brand-blue-tint border border-brand-electric/20">
             <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center shrink-0">
-              <Scissors size={22} className="text-brand-blue" />
+              <Scissors size={22} className="text-brand-electric" />
             </div>
             <div>
-              <h3 className="font-semibold text-brand-navy font-sans text-lg mb-2">
+              <h3 className="h3 text-brand-midnight mb-2">
                 Stocklängen-Kürzungsservice
               </h3>
               <p className="text-brand-slate leading-relaxed">
                 Stöcke zu lang gekauft — oder gebraucht bekommen? Wir kürzen
                 deine Nordic-Walking-Stöcke auf die richtige Länge. Einfach
-                vorbeibringen, Größe angeben, fertig. Schnell und unkompliziert.
+                vorbeibringen, Größe angeben, fertig.
               </p>
             </div>
           </div>
@@ -146,7 +144,7 @@ export default function NordicWalkingPage() {
       </section>
 
       {/* Stocklängen-Tabelle */}
-      <section className="bg-brand-bg py-20 lg:py-28" data-navbar-theme="light">
+      <section className="bg-brand-surface py-20 lg:py-28" data-navbar-theme="light">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             <div>
@@ -157,8 +155,7 @@ export default function NordicWalkingPage() {
               <p className="text-brand-slate leading-relaxed mb-6">
                 Die Faustformel: Körpergröße × 0,68 = empfohlene Stocklänge.
                 Beim Halten des Stocks mit geradem Arm sollte der Ellenbogen
-                einen leichten 90°-Winkel bilden. Wir passen die Länge beim
-                Kauf individuell an.
+                einen leichten 90°-Winkel bilden.
               </p>
               <p className="text-brand-muted text-sm">
                 Hinweis: Aktive Nordic-Walker nutzen oft 2–3 cm längere Stöcke
@@ -166,18 +163,18 @@ export default function NordicWalkingPage() {
               </p>
             </div>
 
-            <div className="bg-white rounded-2xl border border-brand-tint overflow-hidden">
-              <div className="grid grid-cols-2 bg-brand-navy px-6 py-3">
+            <div className="bg-white rounded-2xl border border-brand-border overflow-hidden">
+              <div className="grid grid-cols-2 bg-brand-midnight px-6 py-3">
                 <span className="text-white/60 text-xs font-semibold uppercase tracking-[0.08em]">Körpergröße</span>
                 <span className="text-white/60 text-xs font-semibold uppercase tracking-[0.08em]">Stocklänge</span>
               </div>
               {stocklaengen.map(({ groesse, laenge }, idx) => (
                 <div
                   key={groesse}
-                  className={`grid grid-cols-2 px-6 py-3.5 border-b border-gray-50 last:border-0 ${idx % 2 === 0 ? "bg-white" : "bg-brand-bg/40"}`}
+                  className={`grid grid-cols-2 px-6 py-3.5 border-b border-brand-border last:border-0 ${idx % 2 === 0 ? "bg-white" : "bg-brand-surface/40"}`}
                 >
                   <span className="text-brand-slate text-sm">{groesse}</span>
-                  <span className="text-brand-navy font-semibold text-sm">{laenge}</span>
+                  <span className="text-brand-midnight font-semibold text-sm">{laenge}</span>
                 </div>
               ))}
             </div>
@@ -196,8 +193,7 @@ export default function NordicWalkingPage() {
             <p className="text-brand-slate mt-3 max-w-xl leading-relaxed">
               Hohe Wanderstiefel bremsen die Abrollbewegung — beim Nordic
               Walking ist ein flacher, flexibler Laufschuh mit guter Dämpfung
-              die richtige Wahl. Wir beraten dich nach deiner Technik und
-              deinen Wegen.
+              die richtige Wahl.
             </p>
           </div>
 
@@ -205,9 +201,9 @@ export default function NordicWalkingPage() {
             {schuhMarken.map(({ name, model }) => (
               <div
                 key={name}
-                className="p-6 rounded-2xl border border-gray-100 hover:border-brand-blue/20 hover:shadow-sm transition-all duration-200"
+                className="p-6 rounded-2xl border border-brand-border hover:border-brand-electric/20 hover:shadow-sm transition-all duration-200"
               >
-                <h3 className="font-semibold text-brand-navy text-lg font-sans mb-2">{name}</h3>
+                <h3 className="h3 text-brand-midnight mb-2">{name}</h3>
                 <p className="text-brand-slate text-sm leading-relaxed">{model}</p>
               </div>
             ))}
@@ -216,12 +212,12 @@ export default function NordicWalkingPage() {
       </section>
 
       {/* Leichtathletik */}
-      <section className="bg-brand-bg py-20" data-navbar-theme="light">
+      <section className="bg-brand-surface py-20" data-navbar-theme="light">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-brand-navy mb-5">
-                <Zap size={22} className="text-brand-sky" strokeWidth={1.5} />
+              <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-brand-midnight mb-5">
+                <Zap size={22} className="text-brand-electric" strokeWidth={1.5} />
               </div>
               <SectionLabel>Leichtathletik</SectionLabel>
               <h2 className="h2 text-brand-text mt-2 mb-5">
@@ -241,13 +237,13 @@ export default function NordicWalkingPage() {
             <div className="flex flex-col gap-4">
               <a
                 href="tel:+4956110447-5"
-                className="flex items-center gap-4 p-5 bg-white rounded-xl border border-brand-tint hover:border-brand-blue/20 hover:shadow-sm transition-all group"
+                className="flex items-center gap-4 p-5 bg-white rounded-xl border border-brand-border hover:border-brand-electric/20 hover:shadow-sm transition-all group"
               >
-                <div className="w-10 h-10 rounded-lg bg-brand-tint flex items-center justify-center shrink-0 text-brand-blue font-semibold text-sm">
+                <div className="w-10 h-10 rounded-lg bg-brand-blue-tint flex items-center justify-center shrink-0 text-brand-electric font-semibold text-sm">
                   ☎
                 </div>
                 <div>
-                  <p className="font-semibold text-brand-navy text-sm font-sans group-hover:text-brand-blue transition-colors">
+                  <p className="font-semibold text-brand-midnight text-sm font-sans group-hover:text-brand-electric transition-colors">
                     Vereinsanfrage per Telefon
                   </p>
                   <p className="text-brand-muted text-xs">(0561) 10 44 75</p>
@@ -255,13 +251,13 @@ export default function NordicWalkingPage() {
               </a>
               <a
                 href="mailto:kassel@laufladen.de"
-                className="flex items-center gap-4 p-5 bg-white rounded-xl border border-brand-tint hover:border-brand-blue/20 hover:shadow-sm transition-all group"
+                className="flex items-center gap-4 p-5 bg-white rounded-xl border border-brand-border hover:border-brand-electric/20 hover:shadow-sm transition-all group"
               >
-                <div className="w-10 h-10 rounded-lg bg-brand-tint flex items-center justify-center shrink-0 text-brand-blue font-semibold text-sm">
+                <div className="w-10 h-10 rounded-lg bg-brand-blue-tint flex items-center justify-center shrink-0 text-brand-electric font-semibold text-sm">
                   ✉
                 </div>
                 <div>
-                  <p className="font-semibold text-brand-navy text-sm font-sans group-hover:text-brand-blue transition-colors">
+                  <p className="font-semibold text-brand-midnight text-sm font-sans group-hover:text-brand-electric transition-colors">
                     Vereinsanfrage per E-Mail
                   </p>
                   <p className="text-brand-muted text-xs">kassel@laufladen.de</p>
@@ -273,10 +269,10 @@ export default function NordicWalkingPage() {
       </section>
 
       {/* CTA */}
-      <section className="bg-brand-navy py-20" data-navbar-theme="dark">
+      <section className="bg-brand-midnight py-20" data-navbar-theme="dark">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="h2 text-white mb-4">Fragen zu Stöcken oder Schuhen?</h2>
-          <p className="text-white/70 mb-8 max-w-md mx-auto">
+          <p className="text-white/60 mb-8 max-w-md mx-auto">
             Komm einfach vorbei — wir beraten dich persönlich und passen
             die Stöcke direkt vor Ort an.
           </p>

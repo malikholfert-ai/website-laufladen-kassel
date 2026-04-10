@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
-type ButtonVariant = "primary" | "secondary" | "ghost";
+type ButtonVariant = "primary" | "secondary" | "ghost" | "quiet";
 type ButtonSize = "sm" | "md" | "lg";
 
 interface ButtonBaseProps {
@@ -30,15 +30,18 @@ interface ButtonAsLinkProps extends ButtonBaseProps {
 type ButtonProps = ButtonAsButtonProps | ButtonAsLinkProps;
 
 const variantClasses: Record<ButtonVariant, string> = {
-  /** Grün — NUR für primäre Aktionen (Termin buchen, Laufanalyse anfragen) */
+  /** Electric Blue — primäre Aktionen */
   primary:
-    "bg-brand-cta text-white hover:opacity-90 active:opacity-80 shadow-sm",
-  /** Outline — Secondary Actions */
+    "bg-brand-electric text-white hover:bg-blue-600 active:scale-95 shadow-sm",
+  /** Outline Electric — sekundäre Aktionen auf hellem BG */
   secondary:
-    "border-2 border-brand-blue text-brand-navy hover:bg-brand-tint active:bg-brand-tint/70",
-  /** Ghost — auf dunklem Hintergrund */
+    "border border-brand-electric text-brand-electric hover:bg-brand-blue-tint",
+  /** Ghost White — auf dunklem BG (Midnight/Ink) */
   ghost:
-    "border-2 border-white/30 text-white hover:border-white/60 hover:bg-white/10 active:bg-white/20",
+    "border border-white/30 text-white hover:border-white/70 hover:bg-white/10",
+  /** Ghost Dark — auf hellem BG, dezent */
+  quiet:
+    "text-brand-slate hover:text-brand-midnight underline-offset-4 hover:underline",
 };
 
 const sizeClasses: Record<ButtonSize, string> = {
@@ -48,7 +51,7 @@ const sizeClasses: Record<ButtonSize, string> = {
 };
 
 const baseClasses =
-  "inline-flex items-center justify-center gap-2 font-semibold font-sans transition-all duration-200 cursor-pointer focus-visible:outline-2 focus-visible:outline-brand-blue focus-visible:outline-offset-2 disabled:opacity-50 disabled:cursor-not-allowed select-none";
+  "inline-flex items-center justify-center gap-2 font-semibold font-sans transition-all duration-200 cursor-pointer focus-visible:outline-2 focus-visible:outline-brand-electric focus-visible:outline-offset-2 disabled:opacity-50 disabled:cursor-not-allowed select-none";
 
 export function Button({
   variant = "primary",

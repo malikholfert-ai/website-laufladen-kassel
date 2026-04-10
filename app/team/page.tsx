@@ -7,7 +7,7 @@ import { Ticket, Users, Award } from "lucide-react";
 
 export const metadata: Metadata = createPageMetadata(
   "Team & Geschichte — Laufladen Kassel seit 1984",
-  "Seit 1984 am Friedrichsplatz. Jürgen Thomas Fried und sein Team beraten mit 30+ Jahren Erfahrung — aktiv laufend, fachkundig, persönlich.",
+  "Seit 1984 am Friedrichsplatz. Jürgen Thomas Fried und sein Team beraten mit 40 Jahren Erfahrung — aktiv laufend, fachkundig, persönlich.",
   "/team"
 );
 
@@ -25,7 +25,7 @@ const team = [
     name: "Juliane",
     role: "Beratung & Laufanalyse",
     since: "Aufgewachsen mit dem Laufsport",
-    bio: "Aus einer Läuferfamilie in Rotenburg/Fulda. Studium der Ernährungswissenschaft — Ernährungsberatung rund ums Laufen ist ihr Spezialgebiet. Aktiv auf dem Rennrad und im Triathlon. Die Kombination aus Sportwissen und Praxis.",
+    bio: "Aus einer Läuferfamilie in Rotenburg/Fulda. Studium der Ernährungswissenschaft — Ernährungsberatung rund ums Laufen ist ihr Spezialgebiet. Aktiv auf dem Rennrad und im Triathlon.",
     tags: ["Triathlon", "Rennrad", "Ernährungswissenschaft"],
   },
   {
@@ -39,11 +39,11 @@ const team = [
 ];
 
 const milestones = [
-  { year: "1984", text: "Gründung durch Dieter Theuermeister am Friedrichsplatz 12 in Kassel" },
+  { year: "1984",  text: "Gründung durch Dieter Theuermeister am Friedrichsplatz 12 in Kassel" },
   { year: "~1990", text: "Aufbau des Nordic-Walking-Sortiments — als Erste in Kassel" },
-  { year: "1994", text: "Erweiterung des Teams: Unser Langer kommt dazu" },
-  { year: "2016", text: "Übernahme durch Jürgen Thomas Fried — Kontinuität in der Beratungsphilosophie" },
-  { year: "Heute", text: "30+ Jahre Erfahrung, aktiv laufendes Team, Mitglied im Sport2000 Händlerverbund" },
+  { year: "1994",  text: "Erweiterung des Teams: Unser Langer kommt dazu" },
+  { year: "2016",  text: "Übernahme durch Jürgen Thomas Fried — Kontinuität in der Beratungsphilosophie" },
+  { year: "Heute", text: "40+ Jahre Erfahrung, aktiv laufendes Team, Mitglied im Sport2000 Händlerverbund" },
 ];
 
 export default function TeamPage() {
@@ -51,17 +51,19 @@ export default function TeamPage() {
     <div className="min-h-screen">
 
       {/* Hero */}
-      <section className="bg-brand-navy pt-28 pb-20 lg:pt-36 lg:pb-28" data-navbar-theme="dark">
+      <section className="bg-brand-midnight pt-28 pb-16 lg:pt-36 lg:pb-24" data-navbar-theme="dark">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionLabel variant="light">Über uns</SectionLabel>
-          <h1 className="h1 text-white mt-3 max-w-2xl mb-8">
+          <p className="text-brand-orange text-xs font-display uppercase tracking-[0.2em] mb-4">
+            Über uns
+          </p>
+          <h1 className="h1 text-white max-w-2xl">
             Wir verkaufen nicht — wir beraten.
           </h1>
-          <blockquote className="border-l-2 border-brand-sky pl-6 max-w-2xl">
-            <p className="text-white/80 text-lg leading-relaxed italic" style={{ fontFamily: "var(--font-display)" }}>
+          <blockquote className="mt-6 border-l-2 border-brand-electric/40 pl-6 max-w-2xl">
+            <p className="text-white/70 text-lg leading-relaxed font-light">
               „Den richtigen Schuh für deinen Fuß, nicht den meistbewerteten im Test."
             </p>
-            <footer className="mt-3 text-brand-sky text-sm font-sans">
+            <footer className="mt-3 text-brand-muted text-sm font-sans">
               — Jürgen Thomas Fried, Inhaber
             </footer>
           </blockquote>
@@ -87,13 +89,12 @@ export default function TeamPage() {
               <p className="text-brand-slate leading-relaxed mb-5">
                 2016 übernahm Jürgen Thomas Fried den Laden. Keine Revolution —
                 sondern Kontinuität: Dieselbe Beratungsphilosophie, dasselbe
-                engagierte Team, derselbe Anspruch. Was sich geändert hat: ein
-                neuer Inhaber, der selbst läuft und weiß, worauf es ankommt.
+                engagierte Team, derselbe Anspruch.
               </p>
               <p className="text-brand-slate leading-relaxed">
                 Die Entscheidung gegen das Laufband und für die Analyse auf dem
                 Bürgersteig traf das Team nach Jahren Erfahrung mit beiden
-                Methoden. Nicht als Marketing-Gag — sondern weil es schlicht
+                Methoden — nicht als Marketing-Gag, sondern weil es schlicht
                 ehrlicher und präziser ist.
               </p>
             </div>
@@ -103,16 +104,14 @@ export default function TeamPage() {
               <div className="space-y-0">
                 {milestones.map(({ year, text }, idx) => (
                   <div key={year} className="flex gap-5 pb-8 last:pb-0 relative">
-                    {/* Vertikale Linie */}
                     {idx < milestones.length - 1 && (
-                      <div className="absolute left-[19px] top-8 bottom-0 w-px bg-brand-tint" aria-hidden="true" />
+                      <div className="absolute left-[19px] top-8 bottom-0 w-px bg-brand-border" aria-hidden="true" />
                     )}
-                    {/* Punkt */}
-                    <div className={`w-10 h-10 rounded-full flex items-center justify-center shrink-0 z-10 ${idx === milestones.length - 1 ? "bg-brand-navy" : "bg-brand-tint"}`}>
-                      <div className={`w-2.5 h-2.5 rounded-full ${idx === milestones.length - 1 ? "bg-brand-sky" : "bg-brand-blue"}`} />
+                    <div className={`w-10 h-10 rounded-full flex items-center justify-center shrink-0 z-10 ${idx === milestones.length - 1 ? "bg-brand-midnight" : "bg-brand-blue-tint"}`}>
+                      <div className={`w-2.5 h-2.5 rounded-full ${idx === milestones.length - 1 ? "bg-brand-electric" : "bg-brand-electric/60"}`} />
                     </div>
                     <div className="pt-1.5">
-                      <p className="text-xs font-semibold text-brand-blue uppercase tracking-[0.08em] mb-1">{year}</p>
+                      <p className="text-xs font-semibold text-brand-electric uppercase tracking-[0.08em] mb-1">{year}</p>
                       <p className="text-brand-slate text-sm leading-relaxed">{text}</p>
                     </div>
                   </div>
@@ -124,7 +123,7 @@ export default function TeamPage() {
       </section>
 
       {/* Team */}
-      <section className="bg-brand-bg py-20 lg:py-28" data-navbar-theme="light">
+      <section className="bg-brand-surface py-20 lg:py-28" data-navbar-theme="light">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-12">
             <SectionLabel>Das Team</SectionLabel>
@@ -141,15 +140,15 @@ export default function TeamPage() {
             {team.map(({ initial, name, role, since, bio, tags }) => (
               <div
                 key={name}
-                className="bg-white rounded-2xl border border-brand-tint p-7 hover:border-brand-blue/20 hover:shadow-md transition-all duration-200"
+                className="bg-white rounded-2xl border border-brand-border p-7 hover:border-brand-electric/20 hover:shadow-md transition-all duration-200"
               >
-                {/* Avatar */}
-                <div className="w-14 h-14 rounded-2xl bg-brand-navy flex items-center justify-center text-white text-xl font-display mb-5"
-                  style={{ fontFamily: "var(--font-display)" }}>
+                <div
+                  className="w-14 h-14 rounded-2xl bg-brand-midnight flex items-center justify-center text-white text-xl font-display font-bold mb-5"
+                >
                   {initial}
                 </div>
-                <h3 className="font-semibold text-brand-navy text-lg font-sans mb-0.5">{name}</h3>
-                <p className="text-brand-blue text-xs font-semibold uppercase tracking-[0.08em] mb-1">{role}</p>
+                <h3 className="h3 text-brand-midnight mb-0.5">{name}</h3>
+                <p className="text-brand-electric text-xs font-semibold uppercase tracking-[0.08em] mb-1">{role}</p>
                 <p className="text-brand-muted text-xs mb-4">{since}</p>
                 <p className="text-brand-slate text-sm leading-relaxed mb-5">{bio}</p>
                 <div className="flex flex-wrap gap-2">
@@ -169,12 +168,12 @@ export default function TeamPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
 
             {/* Parkticket */}
-            <div className="md:col-span-2 flex items-start gap-5 p-6 rounded-2xl bg-brand-cta-light border border-brand-cta/20">
+            <div className="md:col-span-2 flex items-start gap-5 p-6 rounded-2xl bg-brand-blue-tint border border-brand-electric/20">
               <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center shrink-0">
-                <Ticket size={22} className="text-brand-cta" />
+                <Ticket size={22} className="text-brand-electric" />
               </div>
               <div>
-                <h3 className="font-semibold text-brand-navy font-sans mb-1.5">
+                <h3 className="font-semibold text-brand-midnight font-sans mb-1.5">
                   Parkticket-Erstattung
                 </h3>
                 <p className="text-brand-slate text-sm leading-relaxed">
@@ -186,12 +185,12 @@ export default function TeamPage() {
             </div>
 
             {/* Sport2000 */}
-            <div className="flex items-start gap-5 p-6 rounded-2xl bg-brand-bg border border-brand-tint">
+            <div className="flex items-start gap-5 p-6 rounded-2xl bg-brand-surface border border-brand-border">
               <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center shrink-0">
-                <Award size={22} className="text-brand-blue" />
+                <Award size={22} className="text-brand-electric" />
               </div>
               <div>
-                <h3 className="font-semibold text-brand-navy font-sans mb-1.5">
+                <h3 className="font-semibold text-brand-midnight font-sans mb-1.5">
                   Sport2000 Händlerverbund
                 </h3>
                 <p className="text-brand-slate text-sm leading-relaxed">
@@ -205,11 +204,11 @@ export default function TeamPage() {
       </section>
 
       {/* CTA */}
-      <section className="bg-brand-navy py-20" data-navbar-theme="dark">
+      <section className="bg-brand-midnight py-20" data-navbar-theme="dark">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <Users size={32} className="text-brand-sky mx-auto mb-5" strokeWidth={1.5} />
+          <Users size={32} className="text-brand-electric mx-auto mb-5" strokeWidth={1.5} />
           <h2 className="h2 text-white mb-4">Lern uns persönlich kennen</h2>
-          <p className="text-white/70 mb-8 max-w-md mx-auto">
+          <p className="text-white/60 mb-8 max-w-md mx-auto">
             Die beste Beratung passiert im Laden — komm vorbei, ruf an oder
             buch direkt einen Termin für die Laufanalyse.
           </p>

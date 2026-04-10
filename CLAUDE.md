@@ -1,6 +1,360 @@
 @AGENTS.md
 
-# Laufladen Kassel — Nächste Aufgabe: Kontakt-Seite + Build + Git Push
+# Laufladen Kassel — KOMPLETT-REDESIGN v2
+
+## Warum ein Redesign?
+
+Die v1 hat mehrere systematische Fehler:
+- Grüner CTA-Button wirkt wie Apotheke, nicht wie Laufspezialist
+- DM Serif Display = Anwaltskanzlei-Energie, kein Sport
+- Navy-Monochromatik: kein visueller Akzent, keine Spannung
+- CTA "Termin buchen" auf jeder Seite = aggressiver als ein Callcenter
+- Instagram-Section mit 6 grauen Platzhalter-Boxen = kaputt wirkend
+- Hero zu statisch: Laufen = Bewegung, der Hero hat null Energie
+
+---
+
+## Neues Design System (verbindlich)
+
+### Farben — globals.css komplett ersetzen
+
+```css
+@theme {
+  /* Neues Farbsystem — Swiss Modernism + Trust & Authority */
+  --color-brand-midnight:   #0F172A;  /* Primär — Navbar, Hero-BG, dunkle Sektionen */
+  --color-brand-ink:        #1E3A5F;  /* Sekundär — Cards auf dunklem BG, Hover */
+  --color-brand-electric:   #3B82F6;  /* CTA — Buttons, Links, Akzente (KEIN GRÜN MEHR) */
+  --color-brand-blue-tint:  #DBEAFE;  /* Hover-BG, Badge-BG */
+  --color-brand-surface:    #F8FAFC;  /* Sektionshintergründe hell */
+  --color-brand-border:     #E2E8F0;  /* Borders auf hellem BG */
+  --color-brand-orange:     #F97316;  /* Akzent NUR für: Laufanalyse-Badge, Zahl-Highlights */
+  --color-brand-orange-bg:  #FFF7ED;  /* Orange-Tint Background */
+  --color-brand-text:       #0F172A;  /* Headlines auf hellem BG */
+  --color-brand-slate:      #475569;  /* Body Text */
+  --color-brand-muted:      #94A3B8;  /* Labels, Captions */
+  --color-brand-white:      #FFFFFF;
+
+  /* Typografie — BARLOW statt DM Serif */
+  --font-display: "Barlow Condensed", "Arial Narrow", sans-serif;
+  --font-sans:    "Barlow", system-ui, sans-serif;
+}
+```
+
+### Fonts laden (layout.tsx)
+
+```tsx
+import { Barlow_Condensed, Barlow } from 'next/font/google';
+
+const barlowCondensed = Barlow_Condensed({
+  variable: '--font-display',
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '800'],
+  style: ['normal', 'italic'],
+  display: 'swap',
+});
+
+const barlow = Barlow({
+  variable: '--font-sans',
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+  display: 'swap',
+});
+```
+
+### Typografie-Skala (globals.css)
+
+```css
+/* Display: Barlow Condensed Bold Uppercase — das ist die neue Marken-Stimme */
+.display-xl {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 700;
+  line-height: 1.0;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+/* H1: condensed, groß */
+.h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 5vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+
+/* H2: condensed, mittel */
+.h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  font-weight: 600;
+  line-height: 1.2;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+}
+
+/* H3: sans, semibold — Barlow Regular */
+.h3 {
+  font-family: var(--font-sans);
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+/* Stats: Tabular, monospaced-ähnlich */
+.stats-num {
+  font-family: var(--font-display);
+  font-variant-numeric: tabular-nums;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+```
+
+---
+
+## Button.tsx — komplett neu (kein Grün)
+
+```tsx
+const variantClasses = {
+  /** Electric Blue — primäre Aktionen */
+  primary: "bg-brand-electric text-white hover:bg-blue-600 active:scale-95 shadow-sm",
+  /** Outline Midnight — sekundäre Aktionen auf hellem BG */
+  secondary: "border border-brand-electric text-brand-electric hover:bg-brand-blue-tint",
+  /** Ghost White — auf dunklem BG (Midnight/Ink) */
+  ghost: "border border-white/30 text-white hover:border-white/70 hover:bg-white/10",
+  /** Ghost Dark — auf hellem BG, dezent */
+  quiet: "text-brand-slate hover:text-brand-midnight underline-offset-4 hover:underline",
+};
+```
+
+**Kein grüner Button mehr, nirgends.**
+
+---
+
+## Startseite — neue Sektionen
+
+### Sektion 1: Hero — Statement
+
+Kein Split-Layout mehr. Fullwidth, Midnight-BG.
+
+```tsx
+<section className="relative bg-brand-midnight min-h-[85vh] flex items-end pb-16 lg:pb-24 overflow-hidden">
+  {/* Dünne diagonale Akzentlinie als Hintergrund-Detail */}
+  {/* Große Condensed Headline */}
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+    <p className="text-brand-orange text-xs font-display uppercase tracking-[0.2em] mb-4">
+      Friedrichsplatz 12 · Kassel · seit 1984
+    </p>
+    <h1 className="display-xl text-white mb-6 max-w-4xl">
+      Dein Laufschuh.<br/>
+      <span className="text-brand-electric">Gefunden.</span>
+    </h1>
+    <p className="text-white/60 text-lg max-w-xl mb-10 font-sans font-light">
+      Individuelle Laufanalyse auf dem Bürgersteig. Kein Laufband,
+      kein Algorithmus. 40 Jahre Erfahrung.
+    </p>
+    {/* NUR ein CTA — klein, kein Schreien */}
+    <a href="/laufschuhe"
+       className="inline-flex items-center gap-2 text-white/80 hover:text-white font-sans text-sm font-medium transition-colors group">
+      Sortiment entdecken
+      <span className="group-hover:translate-x-1 transition-transform">→</span>
+    </a>
+  </div>
+</section>
+```
+
+### Sektion 2: Stats Strip
+
+```tsx
+<section className="bg-brand-electric py-4" data-navbar-theme="dark">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="flex flex-wrap justify-between gap-6 text-white">
+      {[
+        { num: '40+', label: 'Jahre Erfahrung' },
+        { num: '12', label: 'Top-Marken' },
+        { num: '0€', label: 'Laufanalyse kostet' },
+        { num: '1', label: 'Standort Kassel' },
+      ].map(({ num, label }) => (
+        <div key={label} className="flex items-baseline gap-2">
+          <span className="stats-num text-2xl">{num}</span>
+          <span className="text-white/70 text-sm font-sans">{label}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+```
+
+### Sektion 3: Laufanalyse — Editorial
+
+```tsx
+<section className="bg-white py-24 lg:py-32" data-navbar-theme="light">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+      <div className="lg:col-span-7">
+        {/* Orange Akzent-Label */}
+        <p className="text-brand-orange text-xs font-display uppercase tracking-[0.2em] mb-4">Unsere Methode</p>
+        <h2 className="h1 text-brand-text mb-6">Kein Laufband.</h2>
+        <p className="text-brand-slate text-lg leading-relaxed mb-4 font-light">
+          Wir haben zehn Jahre mit Laufbandanalysen gearbeitet — und uns dann
+          bewusst dagegen entschieden. Das Laufband verfälscht dein natürliches
+          Laufverhalten.
+        </p>
+        <p className="text-brand-slate leading-relaxed mb-8">
+          Wir analysieren draußen, auf dem Bürgersteig vor dem Laden.
+          Dein Laufstil, unter deinen echten Bedingungen.
+        </p>
+        {/* Quiet Link statt großem Button */}
+        <a href="/beratung" className="inline-flex items-center gap-2 text-brand-electric font-sans font-medium text-sm hover:underline">
+          Wie es funktioniert →
+        </a>
+      </div>
+      <div className="lg:col-span-5">
+        {/* 4 Prozess-Schritte kompakt */}
+        {[
+          { nr: '01', text: 'Alte Schuhe mitbringen' },
+          { nr: '02', text: 'Laufstil-Analyse draußen' },
+          { nr: '03', text: 'Individuelle Beratung' },
+          { nr: '04', text: 'Schuhe draußen testen' },
+        ].map(({ nr, text }) => (
+          <div key={nr} className="flex items-center gap-4 py-4 border-b border-brand-border last:border-0">
+            <span className="font-display font-700 text-brand-muted text-lg w-8 shrink-0">{nr}</span>
+            <span className="text-brand-text font-sans font-medium text-sm">{text}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+```
+
+### Sektion 4: Marken — Auto-Scroll Strip
+
+```tsx
+// globals.css hinzufügen:
+// @keyframes scroll-brands {
+//   0% { transform: translateX(0); }
+//   100% { transform: translateX(-50%); }
+// }
+// .brands-track { animation: scroll-brands 20s linear infinite; }
+
+<section className="bg-brand-midnight py-12 overflow-hidden" data-navbar-theme="dark">
+  <div className="flex">
+    <div className="brands-track flex gap-16 items-center whitespace-nowrap">
+      {/* Brands doppelt für nahtloses Looping */}
+      {[...brands, ...brands].map((b, i) => (
+        <span key={i} className="text-white/30 hover:text-white/70 transition-colors font-display font-600 text-xl uppercase tracking-widest">{b}</span>
+      ))}
+    </div>
+  </div>
+</section>
+```
+
+### Sektion 5: Kategorien — 4 große Kacheln
+
+```tsx
+const kategorien = [
+  { title: 'Straßen-laufen', sub: 'Asphalt, Park, Wettkampf', href: '/laufschuhe#strasse', accent: 'bg-brand-blue-tint' },
+  { title: 'Trail-running', sub: 'Wald, Gelände, Off-Road', href: '/laufschuhe#trail', accent: 'bg-brand-orange-bg' },
+  { title: 'Nordic Walking', sub: 'Exel & Leki, Beratung', href: '/nordic-walking', accent: 'bg-brand-surface' },
+  { title: 'Leicht-athletik', sub: 'Spike-Schuhe, Vereine', href: '/laufschuhe#la', accent: 'bg-brand-surface' },
+];
+// 2x2 Grid, jede Kachel mit Bild-Placeholder, Titel H2-condensed, Subtext, Link
+```
+
+### Sektion 6: Öffnungszeiten — kompakt (2-Spalten, kein Maps)
+
+```tsx
+// Links: Zeiten-Tabelle (wie bisher, aber Highlight = brand-electric statt brand-cta)
+// Rechts: 3 Kontakt-Kacheln (Telefon, Mail, Adresse) + Parkticket-Info
+// Kein Google Maps Embed — das gehört auf /kontakt
+```
+
+### Sektion 7: Testimonial-Banner (statt Instagram-Grid)
+
+```tsx
+<section className="bg-brand-midnight py-24" data-navbar-theme="dark">
+  <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <p className="text-brand-orange text-xs font-display uppercase tracking-[0.2em] mb-8">Was Kunden sagen</p>
+    <blockquote className="h1 text-white mb-6">
+      "Der Schuh passt wie angegossen."
+    </blockquote>
+    <p className="text-white/50 text-sm">— Thomas W., Freizeitläufer aus Baunatal</p>
+  </div>
+</section>
+```
+
+---
+
+## Navbar.tsx — Anpassungen
+
+- Scrolled BG: `bg-brand-midnight/95` statt `bg-brand-navy/95`
+- Kein "Termin buchen"-Button in der Nav
+- Logo-Text: Barlow Condensed Bold Uppercase statt serif
+- Links: weißer Text auf dunklem BG, `brand-slate` auf hellem BG
+
+---
+
+## Alle Unterseiten-Heroes — neues Muster
+
+```tsx
+// Einheitlich für /laufschuhe, /beratung, /team, /nordic-walking, /kontakt:
+<section className="bg-brand-midnight pt-28 pb-16" data-navbar-theme="dark">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <p className="text-brand-orange text-xs font-display uppercase tracking-[0.2em] mb-4">{category}</p>
+    <h1 className="h1 text-white max-w-2xl">{title}</h1>
+    <p className="text-white/60 mt-4 max-w-xl leading-relaxed">{subtitle}</p>
+    {/* NUR auf /beratung: CTA Button */}
+  </div>
+</section>
+```
+
+**Kein CTA auf Seiten-Heroes außer /beratung.**
+
+---
+
+## Reihenfolge der Umsetzung
+
+1. `app/globals.css` — Tokens + Fonts + Utility-Klassen komplett ersetzen
+2. `app/layout.tsx` — Barlow Condensed + Barlow laden
+3. `components/ui/Button.tsx` — Varianten neu, kein Grün
+4. `components/layout/Navbar.tsx` — Midnight-BG, kein Termin-Button
+5. `app/page.tsx` — Alle 7 Sektionen neu schreiben
+6. `components/sections/Hero.tsx` — neu
+7. `components/sections/StatsStrip.tsx` — neu
+8. `components/sections/LaufanalyseEditorial.tsx` — ersetzt LaufanalyseTeaser
+9. `components/sections/BrandScroll.tsx` — ersetzt BrandLogos
+10. `components/sections/Kategorien.tsx` — neu
+11. `components/sections/Oeffnungszeiten.tsx` — brand-electric statt brand-cta, Maps raus
+12. `components/sections/TestimonialBanner.tsx` — ersetzt InstagramTeaser
+13. Alle 5 Unterseiten-Heroes anpassen
+14. `npm run build` — TypeScript-Fehler beheben
+
+---
+
+## Was NICHT geändert wird
+
+- Seitenstruktur (6 Seiten + Legal bleiben)
+- `ContactForm.tsx` — bleibt
+- `BookingForm.tsx` — bleibt (auf /beratung)
+- `FAQAccordion.tsx` — bleibt
+- `ProcessSteps.tsx` — bleibt
+- Alle Server Actions (actions.ts)
+- SEO / Metadata
+- Legal Pages
+- Security Headers
+
+---
+
+## Kontext
+
+- Stack: Next.js 16.2, React 19, TypeScript strict, Tailwind v4 (@theme in globals.css)
+- Tailwind v4: KEIN tailwind.config.ts, alle Tokens in globals.css @theme
+- Kunde: Jürgen Thomas Fried · kassel@laufladen.de · (0561) 10 44 75
+
+**START: globals.css zuerst. Dann layout.tsx. Dann Button.tsx. Dann in der Reihenfolge oben. Vollständige Files. Keine Trunkierungen.**
+
 
 ## Projektstand
 

@@ -1,19 +1,14 @@
 import Link from "next/link";
 
 interface LogoProps {
-  /** 'light' = weißes Logo (auf dunklem BG), 'dark' = Navy-Logo (auf hellem BG) */
+  /** 'light' = weißes Logo (auf dunklem BG), 'dark' = Midnight-Logo (auf hellem BG) */
   variant?: "light" | "dark";
   className?: string;
 }
 
-/**
- * SVG-Platzhalter Logo.
- * Läufer-Silhouette + Wortmarke.
- * Austausch: SVG-Pfad durch echte Vektordatei ersetzen — Komponente bleibt identisch.
- */
 export function Logo({ variant = "dark", className = "" }: LogoProps) {
-  const primaryColor = variant === "light" ? "#FFFFFF" : "#1A3F6F";
-  const accentColor = variant === "light" ? "#5B8CC4" : "#2D6FA3";
+  const primaryColor = variant === "light" ? "#FFFFFF" : "#0F172A";
+  const accentColor = variant === "light" ? "#3B82F6" : "#3B82F6";
 
   return (
     <Link
@@ -46,24 +41,21 @@ export function Logo({ variant = "dark", className = "" }: LogoProps) {
           stroke={accentColor}
           strokeWidth="2"
           strokeLinecap="round"
-          opacity="0.6"
+          opacity="0.8"
         />
       </svg>
 
-      {/* Wortmarke */}
-      <span
-        className="flex flex-col leading-none"
-        style={{ fontFamily: "var(--font-sans)" }}
-      >
+      {/* Wortmarke — Barlow Condensed Uppercase */}
+      <span className="flex flex-col leading-none">
         <span
-          className="text-[15px] font-700 tracking-tight"
-          style={{ color: primaryColor, fontWeight: 700 }}
+          className="text-[16px] font-bold uppercase tracking-wide"
+          style={{ color: primaryColor, fontFamily: "var(--font-display)" }}
         >
           Laufladen
         </span>
         <span
-          className="text-[10px] uppercase tracking-[0.12em] font-500"
-          style={{ color: accentColor, fontWeight: 500 }}
+          className="text-[10px] uppercase tracking-[0.14em] font-medium"
+          style={{ color: accentColor, fontFamily: "var(--font-display)" }}
         >
           Kassel
         </span>
